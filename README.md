@@ -3,22 +3,27 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+Bundle install - to install all dependencies
 
-* System dependencies
+rails db:create - to create the database
 
-* Configuration
+rails db:migrate - to create the migrate all the tables
 
-* Database creation
+rails db:seed - to seed the data and also I put the script to test the whole process
 
-* Database initialization
+NOTE: I did not put any endpoint in routes.. To test the whole process you can use the db:seed or run this command:
 
-* How to run the test suite
+rails c - go to console
+paste this script 
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+CustomerTransaction.all.each do |transaction|
+    Point.points_computation(transaction)
+end
 
-* ...
+
+
+#Every calendar quarterly give 100 bonus points for any user spending greater than $2000 in that quarter
+# 1, 2, 3, 4 quarter
+Point.check_quarter_reward(3)
